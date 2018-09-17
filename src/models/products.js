@@ -3,6 +3,7 @@ const INITIAL_STATE = {
   loaded: false,
   error: false,
   items: [],
+  count: 0,
 }
 
 const makeAction = (type, params) => ({ type, params })
@@ -28,7 +29,13 @@ export const reducers = (state = INITIAL_STATE, { type, params }) => {
 
     case actionTypes.success:
       const { items } = params
-      return { loaded: true, loading: false, error: null, items }
+      return {
+        loaded: true,
+        loading: false,
+        count: items.length,
+        error: null,
+        items,
+      }
 
     case actionTypes.failure:
       const { error } = params
@@ -43,7 +50,7 @@ export const reducers = (state = INITIAL_STATE, { type, params }) => {
 }
 
 export const selector = state => {
-  const { products: { loaded, loading, error, items } } = state
+  const { products: { loaded, loading, error, items, count } } = state
 
   return {
     products: {
@@ -51,6 +58,7 @@ export const selector = state => {
       loading,
       error,
       items,
+      count,
     },
   }
 }

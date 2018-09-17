@@ -1,0 +1,19 @@
+.product {
+  flex-grow: 1;
+  width: 200px;
+  max-width: 400px;
+  margin: 0.5em;
+}
+
+.product_image {
+  max-width: 100%;
+  height: auto;
+}
+
+.product__name {
+}
+.product__description {
+}
+.product__price {
+  font-weight: bold;
+}

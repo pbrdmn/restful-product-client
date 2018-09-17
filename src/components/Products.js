@@ -1,18 +1,21 @@
 import React, { PureComponent } from 'react'
+import Product from './Product'
+import '../styles/products.css'
 
 class Products extends PureComponent {
   constructor(props) {
     super(props)
 
     this.state = {
-      page: 1,
-      perpage: 8,
+      page: '1',
+      perpage: '8',
       products: [],
       pages: 1,
     }
 
     this.handlePageChange = this.handlePageChange.bind(this)
     this.handlePerPageChange = this.handlePerPageChange.bind(this)
+    this.renderControls = this.renderControls.bind(this)
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -21,7 +24,6 @@ class Products extends PureComponent {
       0,
     )
     const end = begin + parseInt(state.perpage, 10)
-    console.log('filter', begin, end)
 
     return {
       products: props.products.items.slice(begin, end),
@@ -42,20 +44,30 @@ class Products extends PureComponent {
     this.setState({ perpage: event.target.value })
   }
 
-  render() {
-    const { products: { loading, error } } = this.props
-    const { products, pages, page, perpage } = this.state
+  renderControls() {
+    const { products: { count } } = this.props
+    const { pages, page, perpage } = this.state
+
     const pageOptions = []
     for (var i = 1; i <= pages; i++) {
       pageOptions.push(i)
     }
+    const perPageOptions = [8, 20, 50, 100]
 
     return (
-      <div>
-        <h2>Products</h2>
-        <p>This is the products page</p>
+      <div className="controls">
+        <div className="productCount">{count} Products</div>
+        <div className="perPage">
+          <select onChange={this.handlePerPageChange} value={perpage}>
+            {perPageOptions.map(o => (
+              <option key={o} value={o}>
+                {o} per page
+              </option>
+            ))}
+          </select>
+        </div>
 
-        <p>
+        <div className="pagination">
           Page
           <select onChange={this.handlePageChange} value={page}>
             {pageOptions.map(o => (
@@ -64,31 +76,35 @@ class Products extends PureComponent {
               </option>
             ))}
           </select>
-        </p>
+        </div>
+      </div>
+    )
+  }
 
-        <p>
-          Per Page
-          <select onChange={this.handlePerPageChange} value={perpage}>
-            <option value={8}>8</option>
-            <option value={20}>20</option>
-            <option value={50}>50</option>
-            <option value={100}>100</option>
-          </select>
-        </p>
+  render() {
+    const { products: { loading, error } } = this.props
+    const { products } = this.state
+
+    return (
+      <div>
+        <h2>All Products</h2>
 
         {error && <p className="error">{error.message}</p>}
 
         {loading && <div className="loading">Loading Products</div>}
 
         {products.length > 0 && (
-          <ul className="products">
-            {products.map(product => (
-              <li key={product.id} className="product">
-                {product.id}.
-                {product.product_name}
-              </li>
-            ))}
-          </ul>
+          <div>
+            {this.renderControls()}
+
+            <div className="products">
+              {products.map(product => (
+                <Product key={product.id} {...product} />
+              ))}
+            </div>
+
+            {this.renderControls()}
+          </div>
         )}
       </div>
     )
