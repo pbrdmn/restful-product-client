@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Products component renders 1`] = `
+<div>
+  <h2>
+    All Products
+  </h2>
+  <p
+    className="error"
+  >
+    Error Message
+  </p>
+  <div
+    className="loading"
+  >
+    Loading Products
+  </div>
+  <div>
+    <div
+      className="controls"
+    >
+      <div
+        className="productCount"
+      >
+        0
+         Products
+      </div>
+      <div
+        className="perPage"
+      >
+        <select
+          onChange={[Function]}
+          value="12"
+        >
+          <option
+            value={12}
+          >
+            12
+             per page
+          </option>
+          <option
+            value={30}
+          >
+            30
+             per page
+          </option>
+          <option
+            value={60}
+          >
+            60
+             per page
+          </option>
+          <option
+            value={120}
+          >
+            120
+             per page
+          </option>
+        </select>
+      </div>
+      <div
+        className="pagination"
+      >
+        Page
+        <select
+          onChange={[Function]}
+          value="1"
+        >
+          <option
+            value={1}
+          >
+            1
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      className="products"
+    >
+      <div
+        className="product"
+      >
+        <img
+          alt="{product_name}"
+          className="product_image"
+          height={340}
+          src="product.png"
+          width={340}
+        />
+        <h2
+          className="product_name"
+        >
+          product
+        </h2>
+        <p
+          className="product_description"
+        >
+          description
+        </p>
+        <p
+          className="product_price"
+        >
+          $0.99
+        </p>
+      </div>
+    </div>
+    <div
+      className="controls"
+    >
+      <div
+        className="productCount"
+      >
+        0
+         Products
+      </div>
+      <div
+        className="perPage"
+      >
+        <select
+          onChange={[Function]}
+          value="12"
+        >
+          <option
+            value={12}
+          >
+            12
+             per page
+          </option>
+          <option
+            value={30}
+          >
+            30
+             per page
+          </option>
+          <option
+            value={60}
+          >
+            60
+             per page
+          </option>
+          <option
+            value={120}
+          >
+            120
+             per page
+          </option>
+        </select>
+      </div>
+      <div
+        className="pagination"
+      >
+        Page
+        <select
+          onChange={[Function]}
+          value="1"
+        >
+          <option
+            value={1}
+          >
+            1
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+`;

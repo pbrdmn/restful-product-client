@@ -1,4 +1,4 @@
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   loading: false,
   loaded: false,
   error: false,
@@ -12,14 +12,14 @@ export const actionTypes = {
   request: 'PRODUCTS_REQUESTED',
   success: 'PRODUCTS_SUCCEEDED',
   failure: 'PRODUCTS_FAILED',
-  clear: 'PRODUCTS_CLEAR',
+  reset: 'PRODUCTS_RESET',
 }
 
 export const actions = {
   request: params => makeAction('PRODUCTS_REQUESTED', params),
   success: params => makeAction('PRODUCTS_SUCCEEDED', params),
   failure: params => makeAction('PRODUCTS_FAILED', params),
-  clear: params => makeAction('PRODUCTS_CLEAR', params),
+  reset: params => makeAction('PRODUCTS_RESET', params),
 }
 
 export const reducers = (state = INITIAL_STATE, { type, params }) => {

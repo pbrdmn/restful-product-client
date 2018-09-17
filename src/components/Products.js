@@ -8,7 +8,7 @@ class Products extends PureComponent {
 
     this.state = {
       page: '1',
-      perpage: '8',
+      perpage: '12',
       products: [],
       pages: 1,
     }
@@ -52,7 +52,7 @@ class Products extends PureComponent {
     for (var i = 1; i <= pages; i++) {
       pageOptions.push(i)
     }
-    const perPageOptions = [8, 20, 50, 100]
+    const perPageOptions = [12, 30, 60, 120]
 
     return (
       <div className="controls">

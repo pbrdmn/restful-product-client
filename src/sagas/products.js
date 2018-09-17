@@ -2,9 +2,9 @@ import { call, put, takeLatest } from 'redux-saga/effects'
 import { actions, actionTypes } from '../models/products'
 import fetchProducts from '../services/products'
 
-function* requestProducts() {
+export function* requestProducts(action, mock) {
   try {
-    const items = yield call(fetchProducts)
+    const items = mock ? mock() : yield call(fetchProducts)
     yield put(actions.success({ items }))
   } catch (error) {
     yield put(actions.failure({ error }))
