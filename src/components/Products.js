@@ -21,15 +21,17 @@ class Products extends PureComponent {
   }
 
   static getDerivedStateFromProps(props, state) {
-    const begin = Math.max(
-      parseInt(state.perpage, 10) * (parseInt(state.page, 10) - 1),
-      0,
-    )
+    const perpage = parseInt(state.perpage, 10)
+    const page = parseInt(state.page, 10)
+
+    const pages = Math.ceil(props.products.items.length / perpage)
+    const begin = Math.max(perpage * (page - 1), 0)
     const end = begin + parseInt(state.perpage, 10)
 
     return {
       products: props.products.items.slice(begin, end),
-      pages: Math.ceil(props.products.items.length / state.perpage),
+      pages,
+      page: Math.min(page, pages),
     }
   }
 
@@ -66,27 +68,29 @@ class Products extends PureComponent {
     const perPageOptions = [12, 30, 60, 120]
 
     return (
-      <div className="controls">
-        <div className="productCount">{count} Products</div>
-        <div className="perPage">
-          <select onChange={this.handlePerPageChange} value={perpage}>
-            {perPageOptions.map(o => (
-              <option key={o} value={o}>
-                {o} per page
-              </option>
-            ))}
-          </select>
-        </div>
+      <div className="products__toolbar">
+        <div className="product__count">{count} Products</div>
+        <div className="products__controls">
+          <div className="products__perpage">
+            <select onChange={this.handlePerPageChange} value={perpage}>
+              {perPageOptions.map(o => (
+                <option key={o} value={o}>
+                  {o} per page
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div className="pagination">
-          Page
-          <select onChange={this.handlePageChange} value={page}>
-            {pageOptions.map(o => (
-              <option key={o} value={o}>
-                {o}
-              </option>
-            ))}
-          </select>
+          <div className="products__pagination">
+            Page&nbsp;
+            <select onChange={this.handlePageChange} value={page}>
+              {pageOptions.map(o => (
+                <option key={o} value={o}>
+                  {o}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
     )
@@ -97,7 +101,7 @@ class Products extends PureComponent {
     const { products } = this.state
 
     return (
-      <div>
+      <div className="page page__products">
         <h2>All Products</h2>
 
         {error && <p className="error">{error.message}</p>}

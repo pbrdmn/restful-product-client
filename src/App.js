@@ -9,7 +9,7 @@ import reducers from './reducers'
 import sagas from './sagas'
 import Router from './router'
 
-import './style.css'
+import './styles/app.css'
 
 const initialState = {}
 const history = createBrowserHistory()

@@ -11,20 +11,24 @@ exports[`renders correctly 1`] = `
     src="product.png"
     width={340}
   />
-  <h2
-    className="product_name"
+  <div
+    className="product__details"
   >
-    Product Name
-  </h2>
-  <p
-    className="product_description"
-  >
-    Description
-  </p>
-  <p
-    className="product_price"
-  >
-    $9.99
-  </p>
+    <h2
+      className="product__name"
+    >
+      Product Name
+    </h2>
+    <p
+      className="product__description"
+    >
+      Description
+    </p>
+    <p
+      className="product__price"
+    >
+      $9.99
+    </p>
+  </div>
 </div>
 `;

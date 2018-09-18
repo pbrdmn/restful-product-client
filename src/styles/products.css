@@ -4,12 +4,23 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
+  margin: 0 -0.5em;
 }
 
-.controls {
+.products__toolbar {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+  margin: 1em 0;
 }
 
+.products__controls {
+  display: flex;
+  flex-direction: row;
+}
+
+.products__perpage,
+.products__pagination {
+  margin-left: 1em;
+}

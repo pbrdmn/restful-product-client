@@ -10,10 +10,12 @@ const Router = ({ history }) => (
   <ConnectedRouter history={history}>
     <div>
       <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/products" component={Products} />
-      </Switch>
+      <main>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/products" component={Products} />
+        </Switch>
+      </main>
     </div>
   </ConnectedRouter>
 )
