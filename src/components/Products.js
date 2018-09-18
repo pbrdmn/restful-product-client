@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import qs from 'query-string'
 import Product from './Product'
 import '../styles/products.css'
 
@@ -34,14 +36,23 @@ class Products extends PureComponent {
   componentDidMount() {
     const { loaded, loading, fetchProducts } = this.props
     if (!loaded && !loading) fetchProducts()
+
+    const queryString = this.props.location && this.props.location.search
+    const { page = 1, perpage = 12 } = qs.parse(queryString)
+
+    this.setState({ page, perpage })
   }
 
   handlePageChange(event) {
-    this.setState({ page: event.target.value })
+    const page = event.target.value
+    this.props.updateParams({ ...this.state, page })
+    this.setState({ page })
   }
 
   handlePerPageChange(event) {
-    this.setState({ perpage: event.target.value })
+    const perpage = event.target.value
+    this.props.updateParams({ ...this.state, perpage })
+    this.setState({ perpage })
   }
 
   renderControls() {
@@ -109,6 +120,27 @@ class Products extends PureComponent {
       </div>
     )
   }
+}
+
+Products.propTypes = {
+  products: PropTypes.shape({
+    loading: PropTypes.bool,
+    error: PropTypes.oneOf([
+      false,
+      PropTypes.shape({
+        message: PropTypes.string,
+      }),
+    ]),
+    count: PropTypes.number,
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number,
+        product_name: PropTypes.string,
+      }),
+    ),
+  }),
+  fetchProducts: PropTypes.func.isRequired,
+  updateParams: PropTypes.func.isRequired,
 }
 
 export default Products

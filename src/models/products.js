@@ -53,12 +53,10 @@ export const selector = state => {
   const { products: { loaded, loading, error, items, count } } = state
 
   return {
-    products: {
-      loaded,
-      loading,
-      error,
-      items,
-      count,
-    },
+    loaded,
+    loading,
+    error,
+    items,
+    count,
   }
 }

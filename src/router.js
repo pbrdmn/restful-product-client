@@ -1,12 +1,13 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router'
+import { ConnectedRouter } from 'connected-react-router'
 
 import Header from './components/Header'
-import Home from './components/Home';
-import Products from './containers/Products';
+import Home from './components/Home'
+import Products from './containers/Products'
 
-const Router = () => (
-  <BrowserRouter>
+const Router = ({ history }) => (
+  <ConnectedRouter history={history}>
     <div>
       <Header />
       <Switch>
@@ -14,7 +15,7 @@ const Router = () => (
         <Route exact path="/products" component={Products} />
       </Switch>
     </div>
-  </BrowserRouter>
+  </ConnectedRouter>
 )
 
 export default Router

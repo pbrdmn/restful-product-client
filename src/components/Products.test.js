@@ -6,7 +6,7 @@ const mockProps = overrides => ({
   products: {
     loading: true,
     loaded: true,
-    error: { message: 'Error Message' },
+    error: false,
     items: [
       {
         id: 1,
@@ -19,6 +19,7 @@ const mockProps = overrides => ({
     count: 0,
   },
   fetchProducts: jest.fn(),
+  updateParams: jest.fn(),
   ...overrides,
 })
 
