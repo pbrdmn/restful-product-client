@@ -2,23 +2,23 @@
 
 Install dependencies with 
 
-```yarn```
+```npm ci```
 
 # Test
 
 Run tests with
 
-```yarn test```
+```npm test```
 
 Coverage
 
-```yarn test --coverage```
+```npm test --coverage```
 
 # Run
 
 Run a development build with
 
-```yarn start```
+```npm start```
 
 The script should launch a browser window at `http://localhost:3000`
 
